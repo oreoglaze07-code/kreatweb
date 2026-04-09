@@ -13,13 +13,13 @@ const Footer = () => {
 
         <div className="flex items-center gap-8">
           <a
-            href="mailto:hello@kreatweb.com"
+            href="mailto:hello@kreat_web.com"
             className="text-muted-foreground hover:text-primary transition-colors text-sm font-body"
           >
-            hello@kreatweb.com
+            hello@kreat_web.com
           </a>
           <a
-            href="https://instagram.com/kreatweb"
+            href="https://instagram.com/kreat_web"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
