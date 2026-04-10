@@ -1,3 +1,5 @@
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
 const testimonials = [
   {
     quote: "Kreat Web completely transformed our online presence. The website they designed for our studio brought in more premium clients within the first month.",
@@ -12,10 +14,13 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const headerRef = useScrollReveal();
+  const gridRef = useScrollReveal({ threshold: 0.1 });
+
   return (
     <section className="py-32 px-6 lg:px-12">
       <div className="container mx-auto max-w-5xl">
-        <div className="text-center mb-20">
+        <div ref={headerRef} className="text-center mb-20 scroll-reveal-up">
           <p className="text-sm tracking-[0.4em] text-muted-foreground uppercase mb-4 font-body">
             Testimonials
           </p>
@@ -24,9 +29,9 @@ const TestimonialsSection = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 stagger-children scroll-reveal-up scroll-revealed">
           {testimonials.map((t) => (
-            <div key={t.name} className="p-10 md:p-12 border border-border/50 bg-card/30 hover-lift">
+            <div key={t.name} className="p-10 md:p-12 border border-border/50 bg-card/30 hover-lift scroll-reveal-scale">
               <p className="font-heading text-lg md:text-xl text-foreground leading-relaxed italic mb-8">
                 "{t.quote}"
               </p>
