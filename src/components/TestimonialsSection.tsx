@@ -1,4 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useScrollRevealChildren } from "@/hooks/useScrollRevealChildren";
 
 const testimonials = [
   {
@@ -15,7 +16,7 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const headerRef = useScrollReveal();
-  const gridRef = useScrollReveal({ threshold: 0.1 });
+  const gridRef = useScrollRevealChildren<HTMLDivElement>();
 
   return (
     <section className="py-32 px-6 lg:px-12">
@@ -29,7 +30,7 @@ const TestimonialsSection = () => {
           </h2>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 stagger-children scroll-reveal-up scroll-revealed">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((t) => (
             <div key={t.name} className="p-10 md:p-12 border border-border/50 bg-card/30 hover-lift scroll-reveal-scale">
               <p className="font-heading text-lg md:text-xl text-foreground leading-relaxed italic mb-8">

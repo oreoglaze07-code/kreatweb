@@ -1,4 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useScrollRevealChildren } from "@/hooks/useScrollRevealChildren";
 import interiorImg from "@/assets/portfolio-interior.jpg";
 import cafeImg from "@/assets/portfolio-cafe.jpg";
 import brandImg from "@/assets/portfolio-brand.jpg";
@@ -23,7 +24,7 @@ const projects = [
 
 const PortfolioSection = () => {
   const headerRef = useScrollReveal();
-  const gridRef = useScrollReveal({ threshold: 0.1 });
+  const gridRef = useScrollRevealChildren<HTMLDivElement>();
 
   return (
     <section id="work" className="py-32 px-6 lg:px-12">
@@ -37,7 +38,7 @@ const PortfolioSection = () => {
           </h2>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children scroll-reveal-up scroll-revealed">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div key={project.title} className="group hover-lift cursor-pointer scroll-reveal-scale">
               <div className="overflow-hidden bg-secondary mb-6">

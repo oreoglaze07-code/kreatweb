@@ -1,5 +1,6 @@
 import { Gem, Layout, TrendingUp, Zap } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useScrollRevealChildren } from "@/hooks/useScrollRevealChildren";
 
 const points = [
   { icon: Gem, title: "Premium Design", desc: "Luxury aesthetics that position your brand above the competition" },
@@ -10,7 +11,7 @@ const points = [
 
 const WhyChooseSection = () => {
   const headerRef = useScrollReveal();
-  const gridRef = useScrollReveal({ threshold: 0.1 });
+  const gridRef = useScrollRevealChildren<HTMLDivElement>();
 
   return (
     <section id="about" className="py-32 px-6 lg:px-12 bg-secondary/50">
@@ -25,7 +26,7 @@ const WhyChooseSection = () => {
           </h2>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-8 stagger-children scroll-reveal-up scroll-revealed">
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {points.map((point) => (
             <div key={point.title} className="group p-8 md:p-10 border border-border/50 bg-card/50 backdrop-blur-sm hover-lift scroll-reveal-scale">
               <point.icon className="w-8 h-8 text-accent mb-6 transition-transform duration-500 group-hover:scale-110" />

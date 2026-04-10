@@ -1,4 +1,5 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useScrollRevealChildren } from "@/hooks/useScrollRevealChildren";
 
 const steps = [
   { num: "01", title: "Understand Your Brand", desc: "We dive deep into your vision, audience, and goals to craft a strategy that resonates." },
@@ -8,7 +9,7 @@ const steps = [
 
 const ProcessSection = () => {
   const headerRef = useScrollReveal();
-  const stepsRef = useScrollReveal({ threshold: 0.1 });
+  const stepsRef = useScrollRevealChildren<HTMLDivElement>("scroll-reveal-up", 0.1);
 
   return (
     <section id="process" className="py-32 px-6 lg:px-12 bg-secondary/50">
@@ -22,7 +23,7 @@ const ProcessSection = () => {
           </h2>
         </div>
 
-        <div ref={stepsRef} className="space-y-0 stagger-children scroll-reveal-up scroll-revealed">
+        <div ref={stepsRef} className="space-y-0">
           {steps.map((step, i) => (
             <div
               key={step.num}
