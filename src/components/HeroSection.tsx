@@ -1,8 +1,12 @@
+import { useParallax } from "@/hooks/useScrollReveal";
+
 const HeroSection = () => {
+  useParallax();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/30" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px]" />
+      <div data-parallax="0.08" className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px]" />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <p className="animate-reveal text-sm tracking-[0.4em] text-muted-foreground uppercase mb-8 font-body">
