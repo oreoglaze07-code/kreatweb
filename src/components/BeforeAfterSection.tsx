@@ -1,15 +1,10 @@
 import { X, Check } from "lucide-react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const BeforeAfterSection = () => {
-  const headerRef = useScrollReveal();
-  const beforeRef = useScrollReveal();
-  const afterRef = useScrollReveal();
-
   return (
     <section className="py-32 px-6 lg:px-12">
       <div className="container mx-auto max-w-5xl">
-        <div ref={headerRef} className="text-center mb-20 scroll-reveal-up">
+        <div className="text-center mb-20">
           <p className="text-sm tracking-[0.4em] text-muted-foreground uppercase mb-4 font-body">
             The Transformation
           </p>
@@ -19,7 +14,7 @@ const BeforeAfterSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div ref={beforeRef} className="p-10 md:p-12 border border-border/50 bg-card/30 scroll-reveal-left">
+          <div className="p-10 md:p-12 border border-border/50 bg-card/30">
             <p className="text-sm tracking-[0.3em] text-muted-foreground uppercase mb-8 font-body">Before</p>
             <div className="space-y-5">
               {[
@@ -36,7 +31,7 @@ const BeforeAfterSection = () => {
             </div>
           </div>
 
-          <div ref={afterRef} className="p-10 md:p-12 border border-accent/20 bg-accent/5 scroll-reveal-right">
+          <div className="p-10 md:p-12 border border-accent/20 bg-accent/5">
             <p className="text-sm tracking-[0.3em] text-accent uppercase mb-8 font-body">After</p>
             <div className="space-y-5">
               {[

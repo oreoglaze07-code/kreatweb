@@ -1,6 +1,3 @@
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useScrollRevealChildren } from "@/hooks/useScrollRevealChildren";
-
 const steps = [
   { num: "01", title: "Understand Your Brand", desc: "We dive deep into your vision, audience, and goals to craft a strategy that resonates." },
   { num: "02", title: "Design Premium Layout", desc: "Every pixel is intentional — we create a luxury design tailored to your brand." },
@@ -8,13 +5,10 @@ const steps = [
 ];
 
 const ProcessSection = () => {
-  const headerRef = useScrollReveal();
-  const stepsRef = useScrollRevealChildren<HTMLDivElement>("scroll-reveal-up", 0.1);
-
   return (
     <section id="process" className="py-32 px-6 lg:px-12 bg-secondary/50">
       <div className="container mx-auto max-w-5xl">
-        <div ref={headerRef} className="text-center mb-20 scroll-reveal-up">
+        <div className="text-center mb-20">
           <p className="text-sm tracking-[0.4em] text-muted-foreground uppercase mb-4 font-body">
             Our Process
           </p>
@@ -23,11 +17,11 @@ const ProcessSection = () => {
           </h2>
         </div>
 
-        <div ref={stepsRef} className="space-y-0">
+        <div className="space-y-0">
           {steps.map((step, i) => (
             <div
               key={step.num}
-              className={`flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 py-12 scroll-reveal-up ${
+              className={`flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 py-12 ${
                 i !== steps.length - 1 ? "border-b border-border/50" : ""
               }`}
             >

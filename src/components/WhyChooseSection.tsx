@@ -1,6 +1,4 @@
 import { Gem, Layout, TrendingUp, Zap } from "lucide-react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useScrollRevealChildren } from "@/hooks/useScrollRevealChildren";
 
 const points = [
   { icon: Gem, title: "Premium Design", desc: "Luxury aesthetics that position your brand above the competition" },
@@ -10,13 +8,10 @@ const points = [
 ];
 
 const WhyChooseSection = () => {
-  const headerRef = useScrollReveal();
-  const gridRef = useScrollRevealChildren<HTMLDivElement>();
-
   return (
     <section id="about" className="py-32 px-6 lg:px-12 bg-secondary/50">
       <div className="container mx-auto max-w-5xl">
-        <div ref={headerRef} className="text-center mb-20 scroll-reveal-up">
+        <div className="text-center mb-20">
           <p className="text-sm tracking-[0.4em] text-muted-foreground uppercase mb-4 font-body">
             Why Kreat Web
           </p>
@@ -26,9 +21,12 @@ const WhyChooseSection = () => {
           </h2>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {points.map((point) => (
-            <div key={point.title} className="group p-8 md:p-10 border border-border/50 bg-card/50 backdrop-blur-sm hover-lift scroll-reveal-scale">
+            <div
+              key={point.title}
+              className="group p-8 md:p-10 border border-border/50 bg-card/50 backdrop-blur-sm hover-lift"
+            >
               <point.icon className="w-8 h-8 text-accent mb-6 transition-transform duration-500 group-hover:scale-110" />
               <h3 className="font-heading text-xl text-foreground mb-3">{point.title}</h3>
               <p className="text-muted-foreground font-body font-light leading-relaxed text-sm">

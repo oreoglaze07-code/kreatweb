@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Calendar } from "@/components/ui/calendar";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -19,7 +18,6 @@ const CTASection = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [date, setDate] = useState<Date>();
   const [time, setTime] = useState<string>();
-  const sectionRef = useScrollReveal();
 
   const handleBookCall = () => {
     if (!date || !time) return;
@@ -34,7 +32,7 @@ const CTASection = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-32 px-6 lg:px-12 bg-secondary/50 relative overflow-hidden scroll-reveal-up">
+    <section id="contact" className="py-32 px-6 lg:px-12 bg-secondary/50 relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[150px]" />
 
       <div className="container mx-auto max-w-3xl text-center relative z-10">
