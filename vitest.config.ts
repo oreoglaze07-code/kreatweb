@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
+  base: "/kreatweb/",   // ✅ ADD THIS LINE
   plugins: [react()],
   test: {
     environment: "jsdom",
