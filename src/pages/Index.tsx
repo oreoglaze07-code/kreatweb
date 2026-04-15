@@ -1,6 +1,112 @@
+import { useEffect } from "react";
 import "../static-site.css";
 
 const Index = () => {
+  useEffect(() => {
+    // Mobile menu
+    (window as any).toggleMenu = function() {
+      var m = document.getElementById('mobileMenu')!;
+      var mi = document.getElementById('menuIcon')!;
+      var ci = document.getElementById('closeIcon')!;
+      var open = m.style.display === 'flex';
+      m.style.display = open ? 'none' : 'flex';
+      mi.style.display = open ? 'block' : 'none';
+      ci.style.display = open ? 'none' : 'block';
+    };
+    (window as any).closeMenu = function() {
+      document.getElementById('mobileMenu')!.style.display = 'none';
+      document.getElementById('menuIcon')!.style.display = 'block';
+      document.getElementById('closeIcon')!.style.display = 'none';
+    };
+
+    // Booking
+    var selectedDate: Date | null = null;
+    var selectedTime: string | null = null;
+    var currentMonth: number, currentYear: number;
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var times = ['10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM','5:00 PM','5:30 PM'];
+
+    function updateSendBtn() {
+      (document.getElementById('sendBtn') as HTMLButtonElement).disabled = !(selectedDate && selectedTime);
+    }
+
+    function renderCalendar() {
+      var cal = document.getElementById('calendarPopup')!;
+      var today = new Date(); today.setHours(0,0,0,0);
+      var first = new Date(currentYear, currentMonth, 1);
+      var lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
+      var startDay = first.getDay();
+      var html = '<div class="cal-header"><button class="cal-nav" id="prevMonthBtn">‹</button><span class="cal-month">' + months[currentMonth] + ' ' + currentYear + '</span><button class="cal-nav" id="nextMonthBtn">›</button></div>';
+      html += '<div class="cal-days"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div><div class="cal-grid">';
+      for (var i = 0; i < startDay; i++) html += '<span></span>';
+      for (var d = 1; d <= lastDay; d++) {
+        var dt = new Date(currentYear, currentMonth, d);
+        var past = dt < today;
+        var sel = selectedDate && dt.getTime() === selectedDate.getTime();
+        html += '<button class="cal-day' + (past ? ' disabled' : '') + (sel ? ' selected' : '') + '"' + (past ? ' disabled' : '') + ' data-date="' + currentYear + '-' + currentMonth + '-' + d + '">' + d + '</button>';
+      }
+      html += '</div>';
+      cal.innerHTML = html;
+      document.getElementById('prevMonthBtn')?.addEventListener('click', function() { currentMonth--; if(currentMonth<0){currentMonth=11;currentYear--;} renderCalendar(); });
+      document.getElementById('nextMonthBtn')?.addEventListener('click', function() { currentMonth++; if(currentMonth>11){currentMonth=0;currentYear++;} renderCalendar(); });
+      cal.querySelectorAll('.cal-day:not(.disabled)').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var parts = (btn as HTMLElement).dataset.date!.split('-');
+          var y = parseInt(parts[0]), m = parseInt(parts[1]), dd = parseInt(parts[2]);
+          selectedDate = new Date(y, m, dd);
+          document.getElementById('dateDisplay')!.textContent = months[m] + ' ' + dd + ', ' + y;
+          cal.style.display = 'none';
+          selectedTime = null;
+          showTimeSlots();
+          updateSendBtn();
+        });
+      });
+    }
+
+    function showTimeSlots() {
+      var wrap = document.getElementById('timeSlots')!;
+      var grid = document.getElementById('timeGrid')!;
+      wrap.style.display = 'block';
+      var html = '';
+      times.forEach(function(t) { html += '<button class="time-btn" data-time="' + t + '">' + t + '</button>'; });
+      grid.innerHTML = html;
+      grid.querySelectorAll('.time-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          selectedTime = (btn as HTMLElement).dataset.time!;
+          grid.querySelectorAll('.time-btn').forEach(function(b){ b.classList.remove('selected'); });
+          btn.classList.add('selected');
+          updateSendBtn();
+        });
+      });
+    }
+
+    (window as any).openBooking = function() {
+      document.getElementById('bookingOverlay')!.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      var now = new Date(); currentMonth = now.getMonth(); currentYear = now.getFullYear();
+      renderCalendar();
+    };
+    (window as any).closeBooking = function() {
+      document.getElementById('bookingOverlay')!.style.display = 'none';
+      document.body.style.overflow = '';
+      selectedDate = null; selectedTime = null;
+      document.getElementById('dateDisplay')!.textContent = 'Select a date';
+      document.getElementById('timeSlots')!.style.display = 'none';
+      document.getElementById('calendarPopup')!.style.display = 'none';
+      updateSendBtn();
+    };
+    (window as any).toggleCalendar = function() {
+      var cal = document.getElementById('calendarPopup')!;
+      cal.style.display = cal.style.display === 'block' ? 'none' : 'block';
+    };
+    (window as any).sendBooking = function() {
+      if (!selectedDate || !selectedTime) return;
+      var dateStr = months[selectedDate.getMonth()] + ' ' + selectedDate.getDate() + ', ' + selectedDate.getFullYear();
+      var msg = encodeURIComponent("Hi Kreat Web! I'd like to book a call on " + dateStr + " at " + selectedTime + ". Please confirm availability.");
+      window.open('https://ig.me/m/kreat_web?text=' + msg, '_blank');
+      (window as any).closeBooking();
+    };
+  }, []);
   return (
     <div
       dangerouslySetInnerHTML={{
