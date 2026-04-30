@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+Kreat Web
 
 TODO: Document your project here
