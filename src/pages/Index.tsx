@@ -167,17 +167,17 @@ const Index = () => {
         </div>
         <div class="portfolio-grid">
           <div class="portfolio-item hover-lift">
-            <div class="portfolio-img-wrap"><img src="/src/assets/portfolio-interior.jpg" alt="Luxe Interiors" loading="lazy" width="1280" height="864"/></div>
+            <div class="portfolio-img-wrap"><img src="/src/assets/portfolio-interior-gruszw21.jpg" alt="Luxe Interiors" loading="lazy" width="1280" height="864"/></div>
             <h3 class="portfolio-name">Luxe Interiors</h3>
             <p class="portfolio-cat">INTERIOR DESIGN STUDIO</p>
           </div>
           <div class="portfolio-item hover-lift">
-            <div class="portfolio-img-wrap"><img src="/src/assets/portfolio-cafe.jpg" alt="Brew & Co." loading="lazy" width="1280" height="864"/></div>
+            <div class="portfolio-img-wrap"><img src="/src/assets/portfolio-cafe-dfep6unj.jpg" alt="Brew & Co." loading="lazy" width="1280" height="864"/></div>
             <h3 class="portfolio-name">Brew & Co.</h3>
             <p class="portfolio-cat">CAFÉ & LIFESTYLE BRAND</p>
           </div>
           <div class="portfolio-item hover-lift">
-            <div class="portfolio-img-wrap"><img src="/src/assets/portfolio-brand.jpg" alt="Minimal Studio" loading="lazy" width="1280" height="864"/></div>
+            <div class="portfolio-img-wrap"><img src="/src/assets/portfolio-brand-qiuw0i1o.jpg" alt="Minimal Studio" loading="lazy" width="1280" height="864"/></div>
             <h3 class="portfolio-name">Minimal Studio</h3>
             <p class="portfolio-cat">MODERN BRAND</p>
           </div>
