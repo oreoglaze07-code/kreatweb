@@ -170,7 +170,7 @@ const Index = () => {
         </div>
         <div class="portfolio-grid">
           <div class="portfolio-item hover-lift">
-            <div class="portfolio-img-wrap"><img src="/src/assets/portfolio-interior-gruszw21.jpg" alt="Luxe Interiors" loading="lazy" width="1280" height="864"/></div>
+            <div class="portfolio-img-wrap"><img src="${interiorImg}" alt="Luxe Interiors" loading="lazy" width="1280" height="864"/></div>
             <h3 class="portfolio-name">Luxe Interiors</h3>
             <p class="portfolio-cat">INTERIOR DESIGN STUDIO</p>
           </div>
