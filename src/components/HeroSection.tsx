@@ -1,4 +1,11 @@
 const HeroSection = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/30" />
@@ -19,18 +26,18 @@ const HeroSection = () => {
         </p>
 
         <div className="animate-reveal animate-reveal-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#work"
-            className="group px-10 py-4 border border-primary/30 text-foreground text-sm tracking-widest uppercase font-body hover:bg-primary hover:text-primary-foreground transition-all duration-500"
+          <button
+            onClick={() => scrollToSection("work")}
+            className="group px-10 py-4 border-2 border-primary text-foreground text-sm tracking-widest uppercase font-body hover:bg-primary hover:text-primary-foreground transition-all duration-500 bg-background"
           >
             View Work
-          </a>
-          <a
-            href="#contact"
-            className="px-10 py-4 bg-primary text-primary-foreground text-sm tracking-widest uppercase font-body hover:bg-accent transition-all duration-500"
+          </button>
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="px-10 py-4 bg-primary text-primary-foreground text-sm tracking-widest uppercase font-body hover:bg-accent transition-all duration-500 border-2 border-primary"
           >
             Get a Website
-          </a>
+          </button>
         </div>
 
         <div className="animate-reveal animate-reveal-delay-4 mt-20 flex items-center justify-center gap-12 text-muted-foreground">
